@@ -8,7 +8,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -42,13 +41,12 @@ class HelloControllerTest {
     @Test
     void shouldReturnHelloUsingWebTestClient() {
 
-        String responseBody = webTestClient.get()
+        webTestClient.get()
                 .uri("/")
                 .exchange()
+                .expectStatus()
+                .is2xxSuccessful()
                 .expectBody(String.class)
-                .returnResult()
-                .getResponseBody();
-
-        assertThat(responseBody).isEqualTo("Hello");
+                .isEqualTo("Hello");
     }
 }
