@@ -11,7 +11,7 @@ public class HelloController {
         this.helloService = helloService;
     }
 
-    @GetMapping
+    @GetMapping("/")
     public String greet() {
         return helloService.greet();
     }
