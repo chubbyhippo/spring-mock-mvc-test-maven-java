@@ -1,7 +1,8 @@
 package com.example.demo;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class HelloServiceTest {
 
@@ -9,6 +10,6 @@ class HelloServiceTest {
 
     @Test
     void greet() {
-        Assertions.assertThat(helloService.greet()).isEqualTo("Hello");
+        assertThat(helloService.greet()).isEqualTo("Hello");
     }
 }
